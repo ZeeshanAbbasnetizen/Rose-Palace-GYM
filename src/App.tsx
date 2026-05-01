@@ -28,7 +28,9 @@ import {
   Mail,
   MessageSquare,
   BadgePercent,
-  CheckCircle2
+  CheckCircle2,
+  Camera,
+  Info
 } from "lucide-react";
 import { useRef, useState, useEffect } from "react";
 import type { FormEvent } from "react";
@@ -71,7 +73,9 @@ const Navbar = () => {
 
       <div className="hidden xl:flex items-center gap-10 text-[10px] font-black uppercase tracking-[0.2em] text-white/40">
         <a href="#home" className="hover:text-[#FF5F05] hover:tracking-[0.3em] transition-all duration-300">Home</a>
+        <a href="#about" className="hover:text-[#FF5F05] hover:tracking-[0.3em] transition-all duration-300">About</a>
         <a href="#services" className="hover:text-[#FF5F05] hover:tracking-[0.3em] transition-all duration-300">Experience</a>
+        <a href="#gallery" className="hover:text-[#FF5F05] hover:tracking-[0.3em] transition-all duration-300">Gallery</a>
         <a href="#contact" className="hover:text-[#FF5F05] hover:tracking-[0.3em] transition-all duration-300">Contact</a>
       </div>
 
@@ -99,14 +103,14 @@ const Navbar = () => {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed inset-0 bg-black z-100 flex flex-col p-10 lg:hidden"
+            className="fixed inset-0 bg-black/70 backdrop-blur-3xl z-[200] flex flex-col p-10 lg:hidden overflow-y-auto"
           >
             <div className="flex justify-between items-center mb-20">
               <span className="font-heading font-black text-2xl uppercase tracking-tighter">ROSE<span className="text-[#FF5F05]">PALACE</span></span>
               <X className="w-8 h-8 cursor-pointer" onClick={() => setMobileMenuOpen(false)} />
             </div>
             <div className="flex flex-col gap-8">
-              {['Home', 'Experience', 'Contact'].map((item) => (
+              {['Home', 'About', 'Experience', 'Gallery', 'Contact'].map((item) => (
                 <a 
                   key={item} 
                   href={`#${item.toLowerCase()}`} 
@@ -230,6 +234,132 @@ const Hero = () => {
         <span className="writing-mode-vertical text-[9px] font-black uppercase tracking-[0.5em]">Scroll to Evolve</span>
         <div className="w-[1px] h-10 bg-white" />
       </motion.div>
+    </section>
+  );
+};
+
+const AboutUs = () => {
+  return (
+    <section id="about" className="py-32 px-6 bg-black relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#FF5F05]/5 blur-[120px] rounded-full -mr-64 -mt-64" />
+      
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+        <motion.div
+           initial={{ opacity: 0, x: -50 }}
+           whileInView={{ opacity: 1, x: 0 }}
+           viewport={{ once: true }}
+           transition={{ duration: 1 }}
+        >
+          <div className="inline-flex items-center gap-2 mb-6">
+            <Info className="w-4 h-4 text-[#FF5F05]" />
+            <span className="text-[#FF5F05] font-black uppercase tracking-[0.4em] text-[10px] block">Our Philosophy</span>
+          </div>
+          <h2 className="text-5xl md:text-8xl font-heading font-black uppercase tracking-tighter italic mb-8 leading-none">
+            Transform <br /> Your <span className="text-[#FF5F05]">Body</span> Today
+          </h2>
+          <p className="text-white/50 font-black uppercase tracking-[0.2em] text-xs md:text-sm leading-loose mb-12 max-w-xl">
+            Achieve your weight loss and muscle gain goals with our personalized fitness plans tailored specifically to your body type, BMI, and metabolism. We don't believe in one-size-fits-all. Every body is a unique temple designed for greatness.
+          </p>
+          
+          <div className="bg-white/[0.03] border-l-4 border-[#FF5F05] p-8 rounded-r-2xl mb-12 relative overflow-hidden group">
+             <div className="absolute top-4 right-6 text-[#FF5F05] opacity-20 group-hover:scale-110 transition-transform">
+               <MessageSquare className="w-12 h-12" />
+             </div>
+             <p className="text-white italic text-lg md:text-xl font-medium leading-relaxed mb-6 relative z-10">
+               "It is a very good team, there is a very good atmosphere in which you can feel yourself very well."
+             </p>
+             <div className="flex items-center gap-4 relative z-10">
+               <div className="w-12 h-12 rounded-full bg-[#FF5F05] flex items-center justify-center font-black text-black text-xs">SY</div>
+               <div>
+                 <p className="text-white font-black uppercase tracking-widest text-[10px]">Shoaib Yousaf</p>
+                 <div className="flex text-[#FF5F05] gap-0.5 mt-1">
+                   {[...Array(5)].map((_, i) => <Zap key={i} className="w-2.5 h-2.5 fill-current" />)}
+                 </div>
+               </div>
+             </div>
+          </div>
+          
+          <button 
+            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            className="group flex items-center gap-4 text-[#FF5F05] font-black uppercase tracking-[0.3em] text-[10px] hover:gap-6 transition-all"
+          >
+            Start Your Transformation <ArrowRight className="w-4 h-4" />
+          </button>
+        </motion.div>
+
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.86 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1 }}
+          className="relative aspect-square md:aspect-[4/5] rounded-[40px] overflow-hidden group"
+        >
+          <img 
+            src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop" 
+            className="w-full h-full object-cover grayscale brightness-75 group-hover:scale-110 transition-transform duration-[3000ms]"
+            alt="Transformation"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+          <div className="absolute bottom-10 left-10 right-10 flex flex-col sm:flex-row items-center justify-between gap-6">
+             <div className="flex flex-col text-center sm:text-left">
+               <span className="text-5xl md:text-6xl font-heading font-black italic glow-orange">100%</span>
+               <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#FF5F05]">Personalized Results</span>
+             </div>
+             <div className="bg-white/10 backdrop-blur-3xl border border-white/20 p-6 rounded-3xl flex items-center gap-4 shadow-2xl">
+                <Users className="w-6 h-6 text-[#FF5F05]" />
+                <span className="text-[10px] font-black uppercase tracking-[0.2em] leading-tight">Elite Training <br /> Atmosphere</span>
+             </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+const GalleryGrid = () => {
+  const photos = [
+    { src: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1000&auto=format&fit=crop", span: "row-span-2 col-span-2" },
+    { src: "https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=1000&auto=format&fit=crop", span: "row-span-1 col-span-1" },
+    { src: "https://images.unsplash.com/photo-1571388208497-71bedc66e932?q=80&w=1000&auto=format&fit=crop", span: "row-span-1 col-span-1" },
+    { src: "https://images.unsplash.com/photo-1594381898411-846e7d193883?q=80&w=1000&auto=format&fit=crop", span: "row-span-2 col-span-1" },
+    { src: "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?q=80&w=1000&auto=format&fit=crop", span: "row-span-1 col-span-2" },
+    { src: "https://images.unsplash.com/photo-1541534741688-6078c64b52d3?q=80&w=1000&auto=format&fit=crop", span: "row-span-1 col-span-1" },
+  ];
+
+  return (
+    <section id="gallery" className="py-32 px-6 bg-[#080808]">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex flex-col mb-20 text-center items-center">
+          <div className="inline-flex items-center gap-2 mb-6">
+            <Camera className="w-4 h-4 text-[#FF5F05]" />
+            <span className="text-[#FF5F05] font-black uppercase tracking-[0.4em] text-[10px]">The Visual Experience</span>
+          </div>
+          <h2 className="text-6xl md:text-8xl font-heading font-black uppercase tracking-tighter italic leading-none">
+            Dare To Be <br /> <span className="text-white/10 outline-text">Great</span>
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[250px] md:auto-rows-[300px]">
+          {photos.map((photo, i) => (
+            <motion.div 
+               key={i}
+               initial={{ opacity: 0, scale: 0.9 }}
+               whileInView={{ opacity: 1, scale: 1 }}
+               viewport={{ once: true }}
+               transition={{ duration: 0.6, delay: i * 0.1 }}
+               className={`group relative overflow-hidden rounded-3xl ${photo.span} border border-white/5`}
+            >
+               <img src={photo.src} className="w-full h-full object-cover grayscale brightness-50 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105 transition-all duration-700" alt="Gym" />
+               <div className="absolute inset-0 bg-black/20 group-hover:opacity-0 transition-opacity" />
+               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                  <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(255,255,255,0.2)]">
+                    <ArrowRight className="text-black w-6 h-6 -rotate-45" />
+                  </div>
+               </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
     </section>
   );
 };
@@ -766,7 +896,9 @@ export default function App() {
     <main className="font-sans antialiased bg-[#0A0A0A] text-white selection:bg-[#FF5F05] selection:text-white">
       <Navbar />
       <Hero />
+      <AboutUs />
       <Services />
+      <GalleryGrid />
       <Facilities />
       <VideoSection />
       <MapSection />
