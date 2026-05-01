@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;600;700&family=Montserrat:wght@800;900&family=Space+Grotesk:wght@300;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Anton", sans-serif;
+  --font-heading: "Montserrat", sans-serif;
+  --color-brand-orange: #FF5F05;
+  --color-brand-black: #0A0A0A;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #0A0A0A;
+  color: #ffffff;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Glassmorphism Utility */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glow-orange {
+  box-shadow: 0 0 20px rgba(255, 95, 5, 0.2);
+}
+
+.glow-orange-hover:hover {
+  box-shadow: 0 0 30px rgba(255, 95, 5, 0.4);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0A0A0A;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #FF5F05;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ff7c33;
+}
+
+.outline-text {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
+  color: transparent;
+}
