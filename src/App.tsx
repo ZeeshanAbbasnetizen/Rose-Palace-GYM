@@ -34,7 +34,8 @@ import {
 } from "lucide-react";
 import { useRef, useState, useEffect } from "react";
 import type { FormEvent } from "react";
-import { supabase } from "./lib/supabase";
+import { db } from "./lib/firebase";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 // --- Components ---
 
@@ -502,30 +503,42 @@ const ContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [status, setStatus] = useState<{ type: 'success' | 'error' | null, message: string }>({ type: null, message: "" });
 
+  const handleFirestoreError = (error: unknown, operationType: string, path: string | null) => {
+    const errInfo = {
+      error: error instanceof Error ? error.message : String(error),
+      operationType,
+      path
+    };
+    console.error('Firestore Error: ', JSON.stringify(errInfo));
+    throw new Error(JSON.stringify(errInfo));
+  };
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setStatus({ type: null, message: "" });
 
+    const path = 'contact_submissions';
     try {
-      if (!supabase) {
-        throw new Error("Supabase is not configured. Please add VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY to your project secrets.");
-      }
-
-      const { error } = await supabase
-        .from('contact_submissions')
-        .insert([formData]);
-
-      if (error) throw error;
+      await addDoc(collection(db, path), {
+        ...formData,
+        createdAt: serverTimestamp()
+      });
 
       setStatus({ type: 'success', message: 'Your request has been sent! We will contact you soon.' });
       setFormData({ name: "", mobile: "", email: "", message: "" });
     } catch (err: any) {
-      console.error("Supabase error:", err);
+      console.error("Firebase error:", err);
       setStatus({ 
         type: 'error', 
-        message: 'Something went wrong. Please check your Supabase configuration or try again.' 
+        message: 'Something went wrong. Please check your Firebase configuration or try again.' 
       });
+      // Optionally handle error reporting
+      try {
+        handleFirestoreError(err, 'create', path);
+      } catch (logErr) {
+        // Error already logged
+      }
     } finally {
       setIsSubmitting(false);
     }

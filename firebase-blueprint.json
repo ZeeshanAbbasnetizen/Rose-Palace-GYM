@@ -1,0 +1,40 @@
+{
+  "entities": {
+    "ContactSubmission": {
+      "title": "Contact Submission",
+      "description": "Form submission from the contact page",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the person"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Email address"
+        },
+        "mobile": {
+          "type": "string",
+          "description": "Mobile number"
+        },
+        "message": {
+          "type": "string",
+          "description": "Message content"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the submission was created"
+        }
+      },
+      "required": ["name", "email", "mobile", "message", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/contact_submissions/{submissionId}": {
+      "schema": "ContactSubmission",
+      "description": "Collection of contact form submissions"
+    }
+  }
+}
