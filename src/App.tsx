@@ -173,33 +173,33 @@ const Hero = () => {
         </motion.h1>
 
         <motion.div 
-          className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 w-full max-w-[320px] sm:max-w-none"
+          className="flex flex-col items-center justify-center w-full"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.8 }}
         >
-          <button 
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-            className="w-full sm:w-auto bg-[#FF5F05] text-white px-8 md:px-10 py-3 md:py-4 font-black uppercase tracking-[0.2em] text-[10px] md:text-xs group flex items-center justify-center gap-3 transition-all glow-orange relative overflow-hidden" 
-            id="hero-cta-main"
-          >
-            <span className="relative z-10">Start Your Journey</span>
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform relative z-10" />
-            <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-          </button>
-          <div className="flex flex-col items-center gap-1.5 w-full sm:w-auto">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 w-full max-w-[320px] sm:max-w-none">
+            <button 
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              className="w-full sm:w-auto bg-[#FF5F05] text-white px-8 md:px-10 py-3 md:py-4 font-black uppercase tracking-[0.2em] text-[10px] md:text-xs group flex items-center justify-center gap-3 transition-all glow-orange relative overflow-hidden" 
+              id="hero-cta-main"
+            >
+              <span className="relative z-10">Start Your Journey</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform relative z-10" />
+              <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+            </button>
             <button 
               onClick={() => document.getElementById('video-section')?.scrollIntoView({ behavior: 'smooth' })}
-              className="w-full sm:w-auto border border-white/10 text-white px-8 md:px-10 py-3 md:py-4 font-black uppercase tracking-[0.2em] text-[10px] md:text-xs hover:bg-white hover:text-black transition-all glass-panel" 
+              className="w-full sm:w-auto border border-white/10 text-white px-8 md:px-10 py-3 md:py-4 font-black uppercase tracking-[0.2em] text-[10px] md:text-xs hover:bg-white hover:text-black transition-all glass-panel flex items-center justify-center" 
               id="hero-tour-main"
             >
               Virtual Tour
             </button>
-            <div className="hidden sm:flex items-center gap-2 opacity-30 mt-2">
-               <div className="w-8 h-[1px] bg-white" />
-               <span className="text-[8px] font-black uppercase tracking-widest leading-none">Explore Facility</span>
-               <div className="w-8 h-[1px] bg-white" />
-            </div>
+          </div>
+          <div className="hidden sm:flex items-center gap-2 opacity-30 mt-3">
+             <div className="w-8 h-[1px] bg-white" />
+             <span className="text-[8px] font-black uppercase tracking-widest leading-none">Explore Facility</span>
+             <div className="w-8 h-[1px] bg-white" />
           </div>
         </motion.div>
       </div>
@@ -300,9 +300,8 @@ const GalleryGrid = () => {
     { src: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1000&auto=format&fit=crop", span: "row-span-2 col-span-2" },
     { src: "https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=1000&auto=format&fit=crop", span: "row-span-1 col-span-1" },
     { src: "https://images.unsplash.com/photo-1571388208497-71bedc66e932?q=80&w=1000&auto=format&fit=crop", span: "row-span-1 col-span-1" },
-    { src: "https://images.unsplash.com/photo-1594381898411-846e7d193883?q=80&w=1000&auto=format&fit=crop", span: "row-span-2 col-span-1" },
-    { src: "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?q=80&w=1000&auto=format&fit=crop", span: "row-span-1 col-span-2" },
-    { src: "https://images.unsplash.com/photo-1541534741688-6078c64b52d3?q=80&w=1000&auto=format&fit=crop", span: "row-span-1 col-span-1" },
+    { src: "https://images.unsplash.com/photo-1594381898411-846e7d193883?q=80&w=1000&auto=format&fit=crop", span: "row-span-1 col-span-1" },
+    { src: "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?q=80&w=1000&auto=format&fit=crop", span: "row-span-1 col-span-1" },
   ];
 
   return (
@@ -314,7 +313,7 @@ const GalleryGrid = () => {
             <span className="text-[#FF5F05] font-black uppercase tracking-[0.4em] text-[9px]">The Visual Experience</span>
           </div>
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-heading font-black uppercase tracking-tighter italic leading-none">
-            Dare To Be <br /> <span className="text-white/10 outline-text">Great</span>
+            Dare To Be <br /> <span className="text-[#FF5F05]">Great</span>
           </h2>
         </div>
 
@@ -727,7 +726,7 @@ const Facilities = () => {
         <div className="mb-10">
           <span className="text-[#FF5F05] font-black uppercase tracking-[0.4em] text-[8px] block mb-2">State of the Art</span>
           <h2 className="text-2xl md:text-4xl font-heading font-black uppercase tracking-tighter leading-none italic mb-4">
-            The <span className="text-white/10 not-italic outline-text">Palace</span> Infrastructure
+            The <span className="text-[#FF5F05]">Palace</span> Infrastructure
           </h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -785,7 +784,7 @@ const VideoSection = () => {
 
 const Footer = () => {
   return (
-    <footer id="contact" className="bg-[#0A0A0A] border-t border-white/5 pt-20 pb-8 px-6">
+    <footer id="contact" className="bg-[#0A0A0A] border-t border-white/10 pt-20 pb-8 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           <div className="col-span-1 md:col-span-1">
@@ -798,27 +797,27 @@ const Footer = () => {
                   <span className="font-heading font-black text-lg tracking-tighter uppercase italic">
                     Rose<span className="text-[#FF5F05]">Palace</span>
                   </span>
-                  <span className="text-[6px] font-black uppercase tracking-[0.4em] text-white/30 ml-0.5">Elite Fitness</span>
+                  <span className="text-[6px] font-black uppercase tracking-[0.4em] text-white/60 ml-0.5">Elite Fitness</span>
                 </div>
             </div>
-            <p className="text-white/30 text-[10px] mb-6 leading-relaxed font-medium uppercase tracking-widest">
+            <p className="text-white/70 text-[10px] mb-6 leading-relaxed font-medium uppercase tracking-widest">
               55-N, Gurumangat Road, <br />
               Gulberg-II, Lahore, Pakistan
             </p>
             <div className="flex gap-3">
               <a href="https://www.instagram.com/rosepalacegym/" target="_blank" rel="noopener noreferrer">
-                <Instagram className="w-4 h-4 text-white/40 hover:text-[#FF5F05] cursor-pointer transition-all" />
+                <Instagram className="w-4 h-4 text-white/60 hover:text-[#FF5F05] cursor-pointer transition-all" />
               </a>
               <a href="https://www.facebook.com/rosepalacegym/" target="_blank" rel="noopener noreferrer">
-                <Facebook className="w-4 h-4 text-white/40 hover:text-[#FF5F05] cursor-pointer transition-all" />
+                <Facebook className="w-4 h-4 text-white/60 hover:text-[#FF5F05] cursor-pointer transition-all" />
               </a>
-              <Twitter className="w-4 h-4 text-white/40 hover:text-[#FF5F05] cursor-pointer transition-all" />
+              <Twitter className="w-4 h-4 text-white/60 hover:text-[#FF5F05] cursor-pointer transition-all" />
             </div>
           </div>
           
           <div>
             <h4 className="font-black uppercase tracking-widest text-[10px] mb-6 text-[#FF5F05]">Quick Links</h4>
-            <ul className="space-y-3 text-white/40 text-[9px] font-bold uppercase tracking-widest">
+            <ul className="space-y-3 text-white/70 text-[9px] font-bold uppercase tracking-widest">
               <li className="hover:text-[#FF5F05] cursor-pointer transition-colors">Experience</li>
               <li className="hover:text-[#FF5F05] cursor-pointer transition-colors">Class Schedule</li>
             </ul>
@@ -826,29 +825,29 @@ const Footer = () => {
 
           <div>
             <h4 className="font-black uppercase tracking-widest text-xs mb-8 text-[#FF5F05]">Contact Us</h4>
-            <ul className="space-y-4 text-white/40 text-[11px] font-bold uppercase tracking-widest">
+            <ul className="space-y-4 text-white/80 text-[11px] font-bold uppercase tracking-widest">
               <li className="flex items-center gap-3">
                 <Phone className="w-3 h-3 text-[#FF5F05]" />
-                <span>+92 335 433 7172</span>
+                <span className="text-white/90">+92 335 433 7172</span>
               </li>
               <li className="flex items-center gap-3">
                 <MapPin className="w-3 h-3 text-[#FF5F05]" />
-                <span>Gulberg-II, Lahore</span>
+                <span className="text-white/90">Gulberg-II, Lahore</span>
               </li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-black uppercase tracking-widest text-xs mb-8 text-[#FF5F05]">Stay Elite</h4>
-            <p className="text-white/30 text-[10px] mb-6 font-bold uppercase tracking-widest leading-relaxed">Join our private circle for pre-release nutrition tips.</p>
-            <div className="flex border-b border-white/10 pb-2 group focus-within:border-[#FF5F05] transition-all">
-              <input type="email" placeholder="YOUR EMAIL" className="bg-transparent border-none outline-none text-[10px] w-full font-black tracking-widest placeholder:text-white/10 text-white" />
+            <p className="text-white/70 text-[10px] mb-6 font-bold uppercase tracking-widest leading-relaxed">Join our private circle for pre-release nutrition tips.</p>
+            <div className="flex border-b border-white/20 pb-2 group focus-within:border-[#FF5F05] transition-all">
+              <input type="email" placeholder="YOUR EMAIL" className="bg-transparent border-none outline-none text-[10px] w-full font-black tracking-widest placeholder:text-white/40 text-white" />
               <ArrowRight className="w-4 h-4 text-[#FF5F05] cursor-pointer group-hover:translate-x-1 transition-transform" />
             </div>
           </div>
         </div>
 
-        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4 text-[9px] font-black uppercase tracking-[0.4em] text-white/10">
+        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-[9px] font-black uppercase tracking-[0.4em] text-white/60">
            <span>&copy; 2026 Rose Palace Gym. The Pinnacle of Fitness.</span>
            <div className="flex gap-8">
              <span className="hover:text-[#FF5F05] cursor-pointer">Terms</span>
