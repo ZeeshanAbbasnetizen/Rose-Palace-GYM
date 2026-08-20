@@ -420,7 +420,7 @@ const Services = () => {
         <div className="flex flex-col mb-10 text-center items-center">
             <span className="text-[#FF5F05] font-black uppercase tracking-[0.4em] text-[8px] mb-2">Daily Inspiration</span>
             <h2 className="font-heading font-black text-xl sm:text-2xl md:text-4xl uppercase tracking-tighter mb-2 italic leading-none">
-              Complimentary <span className="text-white/20 not-italic outline-text">Services</span>
+              Complimentary <span className="text-[#FF5F05]">Services</span>
             </h2>
             <p className="max-w-xl text-white/30 font-black uppercase tracking-widest text-[7px] md:text-[8px] mt-1">Elevating your experience with world-class amenities at no extra cost.</p>
         </div>
