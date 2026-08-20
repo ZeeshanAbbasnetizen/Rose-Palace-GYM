@@ -39,6 +39,20 @@ import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 // --- Components ---
 
+const GymBrandIcon = ({ className = "w-7 h-7 sm:w-8 sm:h-8" }: { className?: string }) => (
+  <motion.div 
+    whileHover={{ rotate: 180, scale: 1.08 }}
+    transition={{ duration: 0.6, ease: "anticipate" }}
+    className={`${className} rounded-full overflow-hidden flex items-center justify-center shadow-[0_0_20px_rgba(255,95,5,0.4)] group-hover:shadow-[0_0_25px_rgba(255,95,5,0.7)] transition-all relative shrink-0`}
+  >
+    <img 
+      src="/favicon.svg" 
+      alt="Rose Palace Gym Icon" 
+      className="w-full h-full object-contain select-none pointer-events-none"
+    />
+  </motion.div>
+);
+
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -57,16 +71,10 @@ const Navbar = () => {
     >
       <div className="flex items-center justify-between w-full sm:w-auto">
         <div 
-          className="flex items-center gap-2 cursor-pointer group" 
+          className="flex items-center gap-2.5 cursor-pointer group" 
           onClick={() => document.getElementById('home')?.scrollIntoView({ behavior: 'smooth' })}
         >
-          <motion.div 
-            whileHover={{ rotate: 180 }}
-            transition={{ duration: 0.6, ease: "anticipate" }}
-            className="w-6 h-6 sm:w-7 sm:h-7 bg-[#FF5F05] rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(255,95,5,0.4)]"
-          >
-            <Dumbbell className="text-black w-3 h-3 sm:w-3.5 sm:h-3.5" />
-          </motion.div>
+          <GymBrandIcon className="w-7 h-7 sm:w-8 sm:h-8" />
           <div className="flex flex-col leading-none">
             <span className="font-heading font-black text-sm sm:text-base tracking-tighter uppercase italic">
               Rose<span className="text-[#FF5F05]">Palace</span>
@@ -781,13 +789,17 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           <div className="col-span-1 md:col-span-1">
-            <div className="flex items-center gap-2 mb-6">
-                <div className="w-6 h-6 bg-[#FF5F05] rounded-full flex items-center justify-center">
-                <Dumbbell className="text-black w-3.5 h-3.5" />
+            <div 
+              className="flex items-center gap-2.5 mb-6 cursor-pointer group w-fit"
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            >
+                <GymBrandIcon className="w-8 h-8" />
+                <div className="flex flex-col leading-none">
+                  <span className="font-heading font-black text-lg tracking-tighter uppercase italic">
+                    Rose<span className="text-[#FF5F05]">Palace</span>
+                  </span>
+                  <span className="text-[6px] font-black uppercase tracking-[0.4em] text-white/30 ml-0.5">Elite Fitness</span>
                 </div>
-                <span className="font-heading font-black text-lg tracking-tighter uppercase italic">
-                Rose<span className="text-[#FF5F05]">Palace</span>
-                </span>
             </div>
             <p className="text-white/30 text-[10px] mb-6 leading-relaxed font-medium uppercase tracking-widest">
               55-N, Gurumangat Road, <br />
